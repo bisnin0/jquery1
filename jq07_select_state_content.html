@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상태선택자, 컨텐츠선택자</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		//상태선택자
+		// :text -> 속성값이 text인경우 선택한다.
+		$(":text").css("width","300px").css("height", "30px");
+		// :checked -> 속성에 checked인 경우 선택한다.
+		$(":checked").prop("checked",false);
+		// :selectd -> 속성에 selected인 경우 선택한다
+		//$(":selected").prop("selected", false);
+		
+		//컨텐츠 선택자
+		// contains() -> 특정문자가 포함된 경우 선택
+		$("p:contains('구글과 애플의 앱 장터 수수료 강요')").css("background-color","pink");
+		
+		// has() -> 선택자의 하위에 특정 태그가 포함된 경우 선택
+		$("p:has('b')").css("border","2px solid gray");
+		
+		// not() -> 특정선택자를 제외한 나머지를 선택한다.
+		$("p:not(':first')").css("background-color",'#000').css("color", "#fff");
+		
+		// closest() -> 조상선택자
+		$("p").closest('body').css("background-color","lightblue");
+		
+		// filter()  -> 특정선택자가 포함된 경우 선택
+		$("p").filter(".c1").css("color","yellow");
+		
+		// contents() ->특정선택자가 다른 태그에 포함된 경우
+		$("p").contents().css("font-size","3em");
+		
+		// selectedIndex : selected가 되어 있는 목록의 index를 구한다.
+		
+		var idx = $("#site").prop('selectedIndex');
+		//컴퍼넌트에 value 셋팅
+		$("#username").val(idx);   // $("#username").val()
+	});
+</script>
+</head>
+<body>
+	<div>
+		<p>구글과 애플의 앱 장터 수수료 강요에 대해 <b>현행법으로 강력히 규제해야 한다는 의견과 신중히 대처해야 한다는 입장이 맞섰다</b>.법무법인 에스엔의 정종채 변호사는 23일 한국인터넷기업협회가 연 세미나에서 "공정거래법과 약관규제법을 둘 다 적용해 애플과 구글을 조치해야 한다"고 말했다.
+			정 변호사는 두 회사의 앱 장터 수수료 체계에 대해 "운영체제(OS) 플랫폼에서의 시장지배력을 앱 마켓 시장에 전이 시켜 고율의 수수료율을 강제하는 구조"라며 "결제 시스템을 끼워팔기로 하는 구조"라고 진단했다.
+			그는 "과거 마이크로소프트(MS)의 끼워팔기 사례와 유사하다"며 시장 지배적 지위의 남용금지가 명시된 공정거래법 적용을 주장했다.그는 "한국 약관규제법은 고객에 불리한 약관은 무효"라며 "애플과 구글의 개발자 관련 약관은 인앱결제를 강제해 불공정 행위"라고 지적했다.
+		</p>
+		<p class="c1">그는 "결과적으로 플랫폼 사업자와 개발자·소비자가 경제학적으로 파레토 균형(자원의 가장 효율적인 배분 상태)을 이룰 수 있는 규제와 조사가 필요하다"고 덧붙였다.그러나 법무법인 린의 구태언 변호사는 "강력한 규제는 독약이고 극약"이라며 "과거 인터넷 실명제처럼 위헌 처분을 받을 수 있다"며 신중론을 펼쳤다.구 변호사는 "그렇게 되면 그동안 정부 조치가 유효하다고 믿고 기다렸던 수많은 노력이 물거품이 되고 ICT 생태계에 역효과를 불러일으킬 수 있다"며 "상대가 거대 빅테크 기업이란 점에서 더욱더 신중해야 한다"고 밝혔다.
+			그는 "문제의 본질을 이해하면서 단계적 처방을 해야 한다"며 "기존 공정거래법과 전기통신사업법과의 형평성을 맞춰가면서 심도 있는 논의를 해야 한다"며 덧붙였다.
+		</p>
+		<p class="c1">구글과 애플의 앱 장터 수수료 강요에 대해 현행법으로 강력히 규제해야 한다는 의견과 신중히 대처해야 한다는 입장이 맞섰다.법무법인 에스엔의 정종채 변호사는 23일 한국인터넷기업협회가 연 세미나에서 "공정거래법과 약관규제법을 둘 다 적용해 애플과 구글을 조치해야 한다"고 말했다.
+			정 변호사는 두 회사의 앱 장터 수수료 체계에 대해 "<i>운영체제(OS) 플랫폼에서의 시장지배력을 앱 마켓 시장에 전이 시켜 고율의 수수료율</i>을 강제하는 구조"라며 "결제 시스템을 끼워팔기로 하는 구조"라고 진단했다.
+			그는 "과거 마이크로소프트(MS)의 끼워팔기 사례와 유사하다"며 시장 지배적 지위의 남용금지가 명시된 공정거래법 적용을 주장했다.그는 "한국 약관규제법은 고객에 불리한 약관은 무효"라며 "애플과 구글의 개발자 관련 약관은 인앱결제를 강제해 불공정 행위"라고 지적했다.
+		</p>
+	</div>
+<div>
+	<form>
+		<label>이름</label><input type="text" name="username" id="username"/><br/>
+		<label>연락처</label><input type="text" name="tel" id="tel"/><br/>
+		<label>사용자동의여부</label>
+		<input type="radio" name="accept" value="yes" checked/>동의
+		<input type="radio" name="accept" value="no"/>비동의<br/>
+		<label>자주가는 사이트</label>
+		<select name="site" id="site">
+			<option value="not">==직접선택==</option>
+			<option value="daum">daum.net</option>
+			<option value="nate" selected>nate.com</option>
+			<option value="naver">naver.com</option>
+		</select>
+		<br/>
+		<input type="button" value="확인"/>
+	</form>
+</div>
+
+</body>
+</html>
